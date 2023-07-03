@@ -1,6 +1,8 @@
 # MLflow Demo
 
-This project uses MLflow to track model training experiments and manage model versioning. MLflow is an open-source platform that helps manage the machine learning lifecycle, including experiment tracking, packaging code, and model deployment.
+This project uses MLflow to track model training experiments and manage model versioning.
+
+We refer to this [document](https://mlflow.org/docs/latest/tracking.html#scenario-4-mlflow-with-remote-tracking-server-backend-and-artifact-stores) to simulate setting up a remote MLflow server, creating a PostgreSQL database to store model information, and set up MinIO to store model artifacts.
 
 ```text
                                                       --meta data--> PostgreSQL (port 15432)
