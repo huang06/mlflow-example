@@ -22,7 +22,6 @@ Client (Python SDK) <--> MLflow Sever (port 5001) <--|
 - Python3 (tested with 3.10)
 - Available ports:
   - 5001 (for mlflow server)
-  - 5050 (for pgadmin) (optional)
   - 15432 (for PostgreSQL)
   - 9000, 9001 (for MinIO)
 
