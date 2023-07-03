@@ -1,7 +1,7 @@
 ---
 version: "3"
 services:
-  db:
+  postgres:
     image: docker.io/library/postgres:14.3-alpine
     environment:
       - POSTGRES_DB=mlflow
@@ -20,7 +20,6 @@ services:
       interval: 3s
       timeout: 5s
       retries: 5
-
   minio:
     image: docker.io/bitnami/minio:2023.6.23
     ports:
@@ -32,7 +31,6 @@ services:
       - MINIO_DEFAULT_BUCKETS=my-mlflow
     volumes:
       - miniodata:/data
-
 volumes:
   pgdata:
   miniodata:
