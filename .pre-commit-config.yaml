@@ -1,7 +1,4 @@
 ---
-default_language_version:
-  python: python3
-default_stages: [commit]
 repos:
   - repo: meta
     hooks:
@@ -74,7 +71,6 @@ repos:
           - types-pytz
           - types-requests
           - types-toml
-
   - repo: https://github.com/jumanjihouse/pre-commit-hooks
     rev: 3.0.0
     hooks:
