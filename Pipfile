@@ -4,8 +4,6 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-jupyterlab = "*"
-matplotlib = "*"
 mlflow = "==2.4.1"
 pandas = "*"
 pyarrow = "*"
