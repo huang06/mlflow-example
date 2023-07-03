@@ -1,4 +1,4 @@
-# MLflow Demo
+# MLflow Example
 
 This project uses MLflow to track model training experiments and manage model versioning.
 
