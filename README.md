@@ -123,3 +123,9 @@ pipenv --rm
 # close services
 docker compose down -v
 ```
+
+## Misc
+
+### MLflow ERD
+
+![ERD](docs/erd.png)
