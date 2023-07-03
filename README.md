@@ -114,3 +114,13 @@ export MLFLOW_S3_ENDPOINT_URL="http://127.0.0.1:9000"
 export MLFLOW_TRACKING_URI="http://127.0.0.1:5001"
 python3 train.py
 ```
+
+## Cleanup
+
+```bash
+# remove Python venv
+pipenv --rm
+
+# Close services
+docker compose down -v
+```
