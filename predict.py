@@ -9,7 +9,6 @@ logger = logging.getLogger(__name__)
 
 
 if __name__ == "__main__":
-    mlflow.set_tracking_uri("http://127.0.0.1:5001")
     client = MlflowClient()
 
     model_name = "ElasticnetWineModel"
