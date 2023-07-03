@@ -104,7 +104,7 @@ INFO  [alembic.runtime.migration] Will assume transactional DDL.
 [2023-07-03 21:19:31 +0800] [6318] [INFO] Booting worker with pid: 6318
 ```
 
-Open a new shell and run the training script.
+Open a new terminal and run the training script.
 
 ```bash
 pipenv shell
@@ -118,9 +118,9 @@ python3 train.py
 ## Cleanup
 
 ```bash
-# remove Python venv
+# delete Python venv
 pipenv --rm
 
-# Close services
+# close services
 docker compose down -v
 ```
