@@ -41,7 +41,7 @@ Launch backend services.
 docker compose up -d
 ```
 
-Launch MLflow server.
+Launch MLflow server. (TODO: launch mlflow server via docker compose)
 
 ```bash
 pipenv shell
