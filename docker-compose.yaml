@@ -9,17 +9,8 @@ services:
       - POSTGRES_PASSWORD=postgres
     ports:
       - "15432:5432"
-    # user: "${UID}:${GID}"
     volumes:
-      # - ./data/pgdata:/var/lib/postgresql/data
-      # - /etc/passwd:/etc/passwd:ro
       - pgdata:/var/lib/postgresql/data
-    restart: unless-stopped
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
-      interval: 3s
-      timeout: 5s
-      retries: 5
   minio:
     image: docker.io/bitnami/minio:2023.6.23
     ports:
@@ -31,6 +22,23 @@ services:
       - MINIO_DEFAULT_BUCKETS=my-mlflow
     volumes:
       - miniodata:/data
+  mlflow:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: my-registry/huang06/mlflow:latest
+    ports:
+      - "5001:5000"
+    environment:
+      - MLFLOW_S3_ENDPOINT_URL=http://minio:9000
+      - AWS_ACCESS_KEY_ID=minioadmin
+      - AWS_SECRET_ACCESS_KEY=minioadmin
+      - AWS_DEFAULT_REGION=ap-northeast-1
+    entrypoint:
+      - /bin/bash
+      - -c
+    command:
+      - mlflow server --backend-store-uri "postgresql+psycopg2://postgres:postgres@postgres:5432/mlflow" --artifacts-destination "s3://my-mlflow" --host 0.0.0.0 --port 5000
 volumes:
   pgdata:
   miniodata:

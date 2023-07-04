@@ -2,7 +2,7 @@
 
 This project uses MLflow to track model training experiments and manage artifacts.
 
-We refer to this [document](https://mlflow.org/docs/latest/tracking.html#scenario-5-mlflow-tracking-server-enabled-with-proxied-artifact-storage-access) to set up a remote MLflow server as proxy server, creating a PostgreSQL database to store model information, and set up MinIO to store model artifacts.
+We refer to [Scenario 5](https://mlflow.org/docs/latest/tracking.html#scenario-5-mlflow-tracking-server-enabled-with-proxied-artifact-storage-access) to set up a remote MLflow server as proxy server, creating a PostgreSQL database to store model information, and set up MinIO to store model artifacts.
 
 ## Components
 
@@ -32,45 +32,36 @@ Install Python packages.
 
 ```bash
 python3 -m pip install pipenv
-pipenv install --dev -v
+pipenv install
 ```
 
-Launch backend services.
+Launch MLflow services.
 
 ```bash
+docker compose build mlflow
 docker compose up -d
 ```
 
-Launch MLflow server. (TODO: launch mlflow server via docker compose)
+Run the examples.
 
 ```bash
 pipenv shell
-export MLFLOW_S3_ENDPOINT_URL="http://127.0.0.1:9000"
-export AWS_ACCESS_KEY_ID=minioadmin
-export AWS_SECRET_ACCESS_KEY=minioadmin
-mlflow server \
-  --backend-store-uri "postgresql+psycopg2://postgres:postgres@127.0.0.1:15432/mlflow" \
-  --artifacts-destination s3://my-mlflow \
-  --host 0.0.0.0 \
-  --port 5001
-```
 
-Open a new terminal and run the training script.
-
-```bash
-pipenv shell
 export MLFLOW_TRACKING_URI="http://127.0.0.1:5001"
+
 python3 train.py
+# python3 predict.py
 ```
 
 ### Cleanup
 
 ```bash
+# close services
+docker compose down -v
+
 # delete Python venv
 pipenv --rm
 
-# close services
-docker compose down -v
 ```
 
 ## Misc
