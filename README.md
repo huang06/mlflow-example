@@ -1,6 +1,6 @@
 # MLflow Example
 
-This project uses MLflow to track model training experiments and manage model versioning.
+This project uses MLflow to track model training experiments and manage model artifacts.
 
 We refer to this [document](https://mlflow.org/docs/latest/tracking.html#scenario-5-mlflow-tracking-server-enabled-with-proxied-artifact-storage-access) to set up a remote MLflow server as proxy server, creating a PostgreSQL database to store model information, and set up MinIO to store model artifacts.
 
