@@ -19,13 +19,6 @@ We refer to [Scenario 5](https://mlflow.org/docs/latest/tracking.html#scenario-5
   - 15432 (for PostgreSQL)
   - 9000, 9001 (for MinIO)
 
-## MLflow Steps
-
-1. genearte a model and wrap it to a wrapped pyfunc.
-1. run `mlflow.pyfunc.log_model` to upload the model to artifact storage.
-1. run `mlflow.register_model` to register the model in the model registry.
-1. run `client.transition_model_version_stage` to transition the model to another stage, such as `Production`.
-
 ## Usage
 
 Install Python packages.
