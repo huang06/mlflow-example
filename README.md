@@ -46,6 +46,50 @@ python3 train.py
 # python3 predict.py
 ```
 
+### MLflow model metadata
+
+The MLflow pyfunc wraps the model instance and metadata. Let's see the metadata structure.
+
+```python
+from pprint import pprint
+import mlflow
+import pandas as pd
+
+model_path = 'runs:/afe88a44e0374bf4bf6221225d382bd6/model'
+loaded_model = mlflow.pyfunc.load_model(model_path)
+pprint(loaded_model.metadata.to_dict())
+```
+
+```python
+{'artifact_path': 'model',
+ 'flavors': {'python_function': {'env': {'conda': 'conda.yaml',
+                                         'virtualenv': 'python_env.yaml'},
+                                 'loader_module': 'mlflow.sklearn',
+                                 'model_path': 'model.pkl',
+                                 'predict_fn': 'predict',
+                                 'python_version': '3.10.12'},
+             'sklearn': {'code': None,
+                         'pickled_model': 'model.pkl',
+                         'serialization_format': 'cloudpickle',
+                         'sklearn_version': '1.3.0'}},
+ 'mlflow_version': '2.4.1',
+ 'model_uuid': 'dc8f7048c7114d2d888cde838581406c',
+ 'run_id': 'afe88a44e0374bf4bf6221225d382bd6',
+ 'signature': {'inputs': '[{"type": "double", "name": "fixed acidity"}, '
+                         '{"type": "double", "name": "volatile acidity"}, '
+                         '{"type": "double", "name": "citric acid"}, {"type": '
+                         '"double", "name": "residual sugar"}, {"type": '
+                         '"double", "name": "chlorides"}, {"type": "double", '
+                         '"name": "free sulfur dioxide"}, {"type": "double", '
+                         '"name": "total sulfur dioxide"}, {"type": "double", '
+                         '"name": "density"}, {"type": "double", "name": '
+                         '"pH"}, {"type": "double", "name": "sulphates"}, '
+                         '{"type": "double", "name": "alcohol"}]',
+               'outputs': '[{"type": "tensor", "tensor-spec": {"dtype": '
+                          '"float64", "shape": [-1]}}]'},
+ 'utc_time_created': '2023-07-06 02:12:50.210345'}
+```
+
 ### Cleanup
 
 ```bash
@@ -54,7 +98,6 @@ docker compose down -v
 
 # delete Python venv
 pipenv --rm
-
 ```
 
 ## Misc
