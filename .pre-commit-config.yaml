@@ -4,7 +4,7 @@ repos:
     hooks:
       - id: identity
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.4.0
+    rev: v4.5.0
     hooks:
       - id: check-docstring-first
       - id: check-toml
@@ -19,12 +19,12 @@ repos:
       - id: python-use-type-annotations
       - id: python-no-log-warn
   - repo: https://github.com/asottile/pyupgrade
-    rev: v3.8.0
+    rev: v3.15.0
     hooks:
       - id: pyupgrade
         args: ["--py38-plus"]
   - repo: https://github.com/psf/black
-    rev: 23.3.0
+    rev: 23.9.1
     hooks:
       - id: black
   - repo: https://github.com/adrienverge/yamllint
@@ -32,7 +32,7 @@ repos:
     hooks:
       - id: yamllint
   - repo: https://github.com/PyCQA/flake8
-    rev: 6.0.0
+    rev: 6.1.0
     hooks:
       - id: flake8
   - repo: https://github.com/PyCQA/pydocstyle
@@ -47,7 +47,7 @@ repos:
       - id: isort
         name: Sort imports in Python files
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.4.1
+    rev: v1.6.0
     hooks:
       - id: mypy
         additional_dependencies:
@@ -76,7 +76,7 @@ repos:
     hooks:
       - id: shellcheck
   - repo: https://github.com/compilerla/conventional-pre-commit
-    rev: v2.3.0
+    rev: v2.4.0
     hooks:
       - id: conventional-pre-commit
         stages: [commit-msg]
